@@ -8,10 +8,15 @@ import LargeCard from "./largeCard";
 import Footer from "./footer";
 
 export default async function Home() {
-  const [exploreRes, cardRes] = await Promise.all([
-    fetch("http://localhost:3000/api/exploreData"),
-    fetch("http://localhost:3000/api/cardData"),
-  ]);
+  const baseUrl = process.env.VERCEL_URL
+  ? `https://${process.env.VERCEL_URL}`
+  : 'http://localhost:3000'; // fallback for local dev
+
+const [exploreRes, cardRes] = await Promise.all([
+  fetch(`${baseUrl}/api/exploreData`, { cache: 'no-store' }),
+  fetch(`${baseUrl}/api/cardData`, { cache: 'no-store' }),
+]);
+
   const [exploreData, cardData] = await Promise.all([
     exploreRes.json(),
     cardRes.json(),
