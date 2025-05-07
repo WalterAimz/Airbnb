@@ -1,5 +1,5 @@
 import React from 'react'
-import Image from 'next/image'
+import Image from "next/legacy/image"
 function largeCard({img, title, description, buttonText}) {
   return (
     <section className='cursor-pointer relative py-16 '>
