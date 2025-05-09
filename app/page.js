@@ -1,11 +1,15 @@
 //import Image from "next/image";
-import Head from "next/head";
 import Header from "./header";
 import Barner from "./Barner";
 import SmallCard from "./smallCard";
 import MiddleCard from "./middleCard";
 import LargeCard from "./largeCard";
 import Footer from "./footer";
+
+export const metadata = {
+  title: "Airbnb",
+  description: "Clone by Walter",
+};
 
 export default async function Home() {
   const baseUrl = process.env.VERCEL_URL
@@ -23,11 +27,7 @@ const [exploreRes, cardRes] = await Promise.all([
   ]);
 
   return (
-    <div className="">
-      <Head>
-        <title>Airbnb</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+    <div>
       <Header />
       <Barner />
       <main className="max-w-7xl mx-auto  px-8 sm:px-16">
